@@ -19,7 +19,20 @@
       <nav aria-label="Site">
         <a href="index.html" aria-current="page">Home</a>
         <a href="index.html#tracker">Tracker</a>
-        <a href="index.html#documents">Documents</a>
+        <div class="menu">
+          <a href="outcomes-memo.html">Documents</a>
+          <ul class="menu-list" aria-label="Portfolio documents">
+            <li><a href="outcomes-memo.html"><span class="n">1</span>Portfolio Outcomes Memo</a></li>
+            <li><a href="club-memo.html"><span class="n">2</span>UNM Club Memo</a></li>
+            <li><a href="club-complaint-letter.html"><span class="n">3</span>UNM Club Complaint Letter</a></li>
+            <li><a href="club-flyer.html"><span class="n">4</span>UNM Club Flyer</a></li>
+            <li><a href="postmortem-report.html"><span class="n">5</span>Postmortem PowerPoint Report</a></li>
+            <li><a href="emergency-instructions.html"><span class="n">6</span>Emergency Instructions</a></li>
+            <li><a href="written-instructions.html"><span class="n">7</span>Written Instructions (MWA 1)</a></li>
+            <li><a href="video-instructions.html"><span class="n">8</span>Video Instructions (MWA 1)</a></li>
+            <li><a href="recommendations-report.html"><span class="n">9</span>Recommendations Report</a></li>
+          </ul>
+        </div>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -36,6 +49,10 @@
             <span class="title">Technical Writing Portfolio</span>
           </h1>
           <p class="course">English 2210: Professional and Technical Communication<br>University of New Mexico, Fall 2026</p>
+          <div class="doc-cta">
+            <a class="btn light" href="outcomes-memo.html">View portfolio documents<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
+            <p>All nine documents are under <strong>Documents</strong> in the menu at the top of every page, one page each.</p>
+          </div>
         </div>
         <div class="photo">
           <!-- Put your professional headshot at images/headshot.jpg (portrait orientation works best). -->
@@ -49,7 +66,13 @@
     <section class="about" id="about" aria-labelledby="about-title">
       <div class="wrap">
         <h2 id="about-title">About me</h2>
-        <p>I am a senior at the University of New Mexico completing dual bachelor’s degrees in Computer Science and Computer Engineering, and I am continuing into UNM’s 4+1 shared-credit M.S. in Computer Engineering. Since March 2026, I have worked as a research assistant at COSMIAC, where I build software-defined radio testbeds, embedded communication systems, and satellite mission simulations for sponsored space projects. Before that, I worked in UNM’s Department of Electrical and Computer Engineering designing real-time FPGA control for three-phase power inverters. My work spans C/C++, Python, FPGA development, high-performance computing, and machine learning, and I am comfortable moving between hardware and software. I am a National Science Foundation scholarship recipient, and more than two years as a STEM tutor taught me to explain complex technical ideas clearly to many different audiences.</p>
+        <p class="bio">I am a senior at the University of New Mexico completing dual bachelor’s degrees in Computer Science and Computer Engineering, and I am continuing into UNM’s 4+1 shared-credit M.S. in Computer Engineering. Since March 2026, I have worked as a research assistant at COSMIAC, where I build software-defined radio testbeds, embedded communication systems, and satellite mission simulations for sponsored space projects. Before that, I worked in UNM’s Department of Electrical and Computer Engineering designing real-time FPGA control for three-phase power inverters. My work spans C/C++, Python, FPGA development, high-performance computing, and machine learning, and I am comfortable moving between hardware and software. I am a National Science Foundation scholarship recipient, and more than two years as a STEM tutor taught me to explain complex technical ideas clearly to many different audiences.</p>
+        <!-- Team photo: save it as images/cosmiac-team.jpg. If the file is missing, this whole figure hides itself. -->
+        <figure class="team-photo">
+          <img src="images/cosmiac-team.jpg" alt="Benjamin Webster with his research team at COSMIAC"
+               onerror="this.closest('figure').hidden = true;">
+          <figcaption>With my team at COSMIAC.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -120,89 +143,6 @@
       </div>
     </section>
 
-    <!-- ===================== DOCUMENTS ===================== -->
-    <section class="documents" id="documents" aria-labelledby="documents-title">
-      <div class="wrap">
-        <div class="section-head">
-          <h2 id="documents-title">Portfolio documents</h2>
-          <p>Nine documents from English 2210. Each one has its own page where you can read it, open it full screen, or download it.</p>
-        </div>
-        <ol class="doc-grid">
-          <li>
-            <a class="doc-tile" href="outcomes-memo.html">
-              <span class="num" aria-hidden="true">1</span>
-              <h3><span class="sr-only">Document 1: </span>Portfolio Outcomes Memo</h3>
-              <p><span class="kind">Memo.</span> Reflective memo evaluating my progress on all nine course outcomes.</p>
-              <span class="go">View document <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
-            </a>
-          </li>
-          <li>
-            <a class="doc-tile" href="club-memo.html">
-              <span class="num" aria-hidden="true">2</span>
-              <h3><span class="sr-only">Document 2: </span>UNM Club Memo</h3>
-              <p><span class="kind">Memo.</span> Professional memo written for a UNM student organization.</p>
-              <span class="go">View document <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
-            </a>
-          </li>
-          <li>
-            <a class="doc-tile" href="club-complaint-letter.html">
-              <span class="num" aria-hidden="true">3</span>
-              <h3><span class="sr-only">Document 3: </span>UNM Club Complaint Letter</h3>
-              <p><span class="kind">Letter.</span> Formal complaint letter written for a UNM student organization.</p>
-              <span class="go">View document <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
-            </a>
-          </li>
-          <li>
-            <a class="doc-tile" href="club-flyer.html">
-              <span class="num" aria-hidden="true">4</span>
-              <h3><span class="sr-only">Document 4: </span>UNM Club Flyer</h3>
-              <p><span class="kind">Flyer.</span> One-page promotional flyer for a UNM student organization.</p>
-              <span class="go">View document <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
-            </a>
-          </li>
-          <li>
-            <a class="doc-tile" href="postmortem-report.html">
-              <span class="num" aria-hidden="true">5</span>
-              <h3><span class="sr-only">Document 5: </span>Postmortem PowerPoint Report</h3>
-              <p><span class="kind">Slide deck.</span> Slide presentation reviewing a completed project and its lessons.</p>
-              <span class="go">View document <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
-            </a>
-          </li>
-          <li>
-            <a class="doc-tile" href="emergency-instructions.html">
-              <span class="num" aria-hidden="true">6</span>
-              <h3><span class="sr-only">Document 6: </span>Emergency Instructions</h3>
-              <p><span class="kind">Instructions.</span> Emergency procedure designed to be followed quickly under pressure.</p>
-              <span class="go">View document <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
-            </a>
-          </li>
-          <li>
-            <a class="doc-tile" href="written-instructions.html">
-              <span class="num" aria-hidden="true">7</span>
-              <h3><span class="sr-only">Document 7: </span>Written Instructions (MWA 1)</h3>
-              <p><span class="kind">Instructions.</span> Major Writing Assignment 1: step-by-step written instructions.</p>
-              <span class="go">View document <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
-            </a>
-          </li>
-          <li>
-            <a class="doc-tile" href="video-instructions.html">
-              <span class="num" aria-hidden="true">8</span>
-              <h3><span class="sr-only">Document 8: </span>Video Instructions (MWA 1)</h3>
-              <p><span class="kind">Video.</span> Major Writing Assignment 1: the same instructions as a video.</p>
-              <span class="go">View document <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
-            </a>
-          </li>
-          <li>
-            <a class="doc-tile" href="recommendations-report.html">
-              <span class="num" aria-hidden="true">9</span>
-              <h3><span class="sr-only">Document 9: </span>Recommendations Report</h3>
-              <p><span class="kind">Report.</span> Formal report that compares options and recommends one.</p>
-              <span class="go">View document <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
-            </a>
-          </li>
-        </ol>
-      </div>
-    </section>
   </main>
 
   <footer class="contact" id="contact">

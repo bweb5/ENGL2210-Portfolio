@@ -6,17 +6,19 @@ A multi-page portfolio site for ENGL 2210 in UNM cherry and silver, ready for Gi
 
 | File | What it is |
 |------|------------|
-| `index.html` | Home page: title, photo, bio, live satellite tracker, and links to all nine documents |
-| `outcomes-memo.html` … `recommendations-report.html` | One page per assignment, each showing the document inline |
+| `index.html` | Home page about you: title, headshot, bio, COSMIAC team photo, live satellite tracker, and a button to the documents |
+| `outcomes-memo.html` … `recommendations-report.html` | One page per assignment, each showing the document inline. The **Documents** menu in the top bar lists all nine on hover, so every document is one click from any page |
 | `assets/` | Shared styles (`style.css`), the document viewer (`site.js`), and the tracker (`tracker.js`) |
 | `documents/` | Your PDFs (and the video, if you don't use YouTube) |
-| `images/` | Your headshot |
+| `images/` | Your headshot and team photo |
 | `data/` | Satellite orbit data, filled in automatically by the GitHub Action |
 | `.github/workflows/update-tle.yml` | GitHub Action that refreshes the orbit data twice a day |
 
 ## 1. Add your files
 
 **Headshot.** Save a professional photo as `images/headshot.jpg` (portrait orientation, about 800 × 1000 px). Until then the photo spot shows "BW".
+
+**Team photo.** Save your COSMIAC team picture as `images/cosmiac-team.jpg` (landscape, around 1600 px wide). It appears under your bio with the caption "With my team at COSMIAC." To change the caption, edit the `<figcaption>` line in `index.html`. If the file is missing, the photo section hides itself.
 
 **Documents.** Export every document to PDF, including the PowerPoint and the flyer, so it shows inside the page. Save each one in `documents/` with exactly these names. GitHub Pages is case-sensitive.
 
@@ -64,7 +66,7 @@ GitHub pauses scheduled Actions on repositories with no activity for 60 days. If
 
 ## 4. Check before you submit (due Fri, Dec 4, 11:59 pm)
 
-- [ ] Your photo shows (not "BW").
+- [ ] Your headshot shows (not "BW"), and so does the team photo.
 - [ ] All nine assignment pages show their documents, including the video.
 - [ ] The tracker shows satellites and a "next pass" time.
 - [ ] Every description names your real content.
