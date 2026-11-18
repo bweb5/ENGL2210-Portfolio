@@ -6,17 +6,27 @@ A multi-page portfolio site for ENGL 2210 in UNM cherry and silver, ready for Gi
 
 | File | What it is |
 |------|------------|
-| `index.html` | Home page about you: title, headshot, bio, COSMIAC team photo, live satellite tracker, and a button to the documents |
-| `outcomes-memo.html` … `recommendations-report.html` | One page per assignment, each showing the document inline. The **Documents** menu in the top bar lists all nine on hover, so every document is one click from any page |
+| `index.html` | Home page about you: title, Meteor-M2 satellite image, headshot, bio, ECE / CS / COSMIAC logos, team photo, live satellite tracker, and a button to the documents |
+| `outcomes-memo.html` … `recommendations-report.html` | One page per assignment, each showing the document inline. The **Documents** menu in the red menu bar lists all nine on hover, so every document is one click from any page |
 | `assets/` | Shared styles (`style.css`), the document viewer (`site.js`), and the tracker (`tracker.js`) |
 | `documents/` | Your PDFs (and the video, if you don't use YouTube) |
-| `images/` | Your headshot and team photo |
+| `images/` | Meteor-M2 image (included), plus your headshot, team photo, and logos |
 | `data/` | Satellite orbit data, filled in automatically by the GitHub Action |
 | `.github/workflows/update-tle.yml` | GitHub Action that refreshes the orbit data twice a day |
 
 ## 1. Add your files
 
 **Headshot.** Save a professional photo as `images/headshot.jpg` (portrait orientation, about 800 × 1000 px). Until then the photo spot shows "BW".
+
+**Logos.** Save the three logos in `images/` with these names. PNG with a transparent or white background works best; any width is fine.
+
+| Logo | File name | Links to |
+|------|-----------|----------|
+| UNM Electrical & Computer Engineering | `logo-unm-ece.png` | ece.unm.edu |
+| UNM Computer Science | `logo-unm-cs.png` | cs.unm.edu |
+| COSMIAC | `logo-cosmiac.png` | cosmiac.unm.edu |
+
+Until a logo file is there, its tile shows the name in text, so the page still looks finished. UNM's logos are registered marks with usage rules (see brand.unm.edu), and COSMIAC's is your employer's, so it's worth a quick check with the department and COSMIAC before publishing them.
 
 **Team photo.** Save your COSMIAC team picture as `images/cosmiac-team.jpg` (landscape, around 1600 px wide). It appears under your bio with the caption "With my team at COSMIAC." To change the caption, edit the `<figcaption>` line in `index.html`. If the file is missing, the photo section hides itself.
 
@@ -42,6 +52,8 @@ If a file is missing, its page says "This document hasn't been uploaded yet" ins
 
 `Webster_Resume.pdf` is linked in the footer of every page. It includes your phone number; delete the file and the footer link if you don't want that public.
 
+**Meteor-M2 image.** `images/meteor-australia.jpg` (full, with the dropout stripe trimmed off) and `images/meteor-australia-hero.jpg` (the cropped version on the home page) are already included. Clicking the image opens the full version. If someone else received it, add a credit to its caption in `index.html`.
+
 ## 2. Publish on GitHub Pages
 
 1. Create a new **public** repository on GitHub (for example `portfolio`).
@@ -49,6 +61,8 @@ If a file is missing, its page says "This document hasn't been uploaded yet" ins
    - Your computer may hide the `.github` folder because its name starts with a dot. If it didn't upload, click **Add file → Create new file**, name it `.github/workflows/update-tle.yml`, paste in the contents of that file, and commit.
 3. Go to **Settings → Pages**. Set **Source** to *Deploy from a branch*, choose **main** and **/ (root)**, and click **Save**.
 4. Your site will be live at `https://YOUR-USERNAME.github.io/portfolio/` within a couple of minutes. That's the link you submit in Canvas.
+
+**Updating an existing site:** upload *every* file again, including the `assets` folder, so the pages and the stylesheet match. If the site still looks like an old version, press Ctrl+Shift+R (Cmd+Shift+R on a Mac) to skip the browser's cache. The pages load `style.css?v=5`; if you ever edit `style.css` or a script yourself, change that number in every page so browsers fetch the new copy.
 
 ## 3. Turn on the satellite tracker's data feed
 
@@ -67,6 +81,7 @@ GitHub pauses scheduled Actions on repositories with no activity for 60 days. If
 ## 4. Check before you submit (due Fri, Dec 4, 11:59 pm)
 
 - [ ] Your headshot shows (not "BW"), and so does the team photo.
+- [ ] The three logos show (or you've decided to keep the text tiles).
 - [ ] All nine assignment pages show their documents, including the video.
 - [ ] The tracker shows satellites and a "next pass" time.
 - [ ] Every description names your real content.
