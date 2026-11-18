@@ -1,0 +1,58 @@
+# Keeps the satellite tracker's orbit data fresh.
+# Twice a day, downloads the latest TLEs from CelesTrak into data/tle.txt and
+# commits them, so the tracker can read them from this site without depending
+# on CelesTrak allowing requests from browsers.
+# Run it once by hand after setting up: Actions tab > "Update satellite orbit data" > Run workflow.
+
+name: Update satellite orbit data
+
+on:
+  schedule:
+    - cron: "23 5,17 * * *"   # about 10:23 PM and 10:23 AM in Albuquerque
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download TLEs from CelesTrak
+        run: |
+          mkdir -p data
+          : > data/tle.new
+          for id in 25544 20580 57166 59051; do
+            curl -fsS --retry 3 --max-time 30 \
+              "https://celestrak.org/NORAD/elements/gp.php?CATNR=${id}&FORMAT=TLE" >> data/tle.new
+            echo >> data/tle.new
+          done
+          count=$(grep -c '^1 ' data/tle.new || true)
+          if [ "$count" -ne 4 ]; then
+            echo "Expected 4 element sets, got $count. Keeping the old file."
+            cat data/tle.new
+            exit 1
+          fi
+          tr -d '\r' < data/tle.new | sed '/^$/d' > data/tle.txt
+          rm data/tle.new
+
+      - name: Download world map outline (first run only)
+        run: |
+          if [ ! -s data/land-110m.json ]; then
+            curl -fsS --retry 3 -o data/land-110m.json \
+              "https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json"
+          fi
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/tle.txt data/land-110m.json
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git commit -m "Update satellite orbit data"
+            git push
+          fi
