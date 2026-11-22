@@ -7,8 +7,8 @@
   <meta name="description" content="Technical writing portfolio of Benjamin Webster, Computer Science and Computer Engineering student at the University of New Mexico.">
   <link rel="preconnect" href="https://fonts.bunny.net">
   <link rel="stylesheet" href="https://fonts.bunny.net/css?family=zilla-slab:500,600,700|montserrat:400,500,600,700&display=swap">
-  <link rel="stylesheet" href="assets/style.css?v=5">
-  <script src="assets/tracker.js?v=5" defer></script>
+  <link rel="stylesheet" href="assets/style.css?v=6">
+  <script src="assets/tracker.js?v=6" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to main content</a>
@@ -46,8 +46,8 @@
 
   <main id="main">
     <!-- ===================== TITLE PAGE ===================== -->
-    <section class="band title-band" aria-labelledby="page-title">
-      <svg class="parapet" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true" focusable="false"><polygon points="0,0 1440,0 1440,44 1230,44 1230,34 1100,34 1100,44 710,44 710,26 660,26 660,10 570,10 570,26 520,26 520,44 300,44 300,34 140,34 140,44 0,44"/></svg>
+    <section class="panel band title-band" aria-labelledby="page-title">
+      
       <div class="wrap title-grid">
         <div>
           <h1 id="page-title">
@@ -73,7 +73,7 @@
     </section>
 
     <!-- ===================== ABOUT ===================== -->
-    <section class="about" id="about" aria-labelledby="about-title">
+    <section class="panel about" id="about" aria-labelledby="about-title">
       <div class="wrap about-grid">
         <div class="photo">
           <!-- Put your professional headshot at images/headshot.jpg (portrait orientation works best). -->
@@ -84,7 +84,7 @@
 
         <div class="about-text">
           <h2 id="about-title">About me</h2>
-          <p class="bio">I am a senior at the University of New Mexico completing dual bachelor’s degrees in Computer Science and Computer Engineering, and I am continuing intoUNM’s 4+1 shared-credit M.S. in Computer Engineering. Since March 2026, I have worked as a research assistant at COSMIAC, where I build software-defined radio testbeds, embedded communication systems, and satellite mission simulations for sponsored space projects. Before that, I worked in UNM’s Department of Electrical and Computer Engineering designing real-time FPGA control for three-phase power inverters. My work spans C/C++, Python, FPGA development, high-performance computing, and machine learning, and I am comfortable moving between hardware and software. </p>
+          <p class="bio">I am a senior at the University of New Mexico completing dual bachelor’s degrees in Computer Science and Computer Engineering, and I am continuing into UNM’s 4+1 shared-credit M.S. in Computer Engineering. Since March 2026, I have worked as a research assistant at COSMIAC, where I build software-defined radio testbeds, embedded communication systems, and satellite mission simulations for sponsored space projects. Before that, I worked in UNM’s Department of Electrical and Computer Engineering designing real-time FPGA control for three-phase power inverters. My work spans C/C++, Python, FPGA development, high-performance computing, and machine learning, and I am comfortable moving between hardware and software. I am a National Science Foundation scholarship recipient, and more than two years as a STEM tutor taught me to explain complex technical ideas clearly to many different audiences.</p>
 
           <div class="affiliations">
             <h3>Where I study and work</h3>
@@ -124,18 +124,33 @@
             </ul>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Team photo: save it as images/cosmiac-team.jpg. If the file is missing, this whole figure hides itself. -->
-        <figure class="team-photo">
-          <img src="images/cosmiac-team.jpg" alt="Benjamin Webster with his research team at COSMIAC"
-               onerror="this.closest('figure').hidden = true;">
-          <figcaption>With my team at COSMIAC.</figcaption>
-        </figure>
+    <!-- ===================== AT COSMIAC ===================== -->
+    <section class="panel showcase" id="cosmiac" aria-labelledby="cosmiac-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="cosmiac-title">At COSMIAC</h2>
+          <p>COSMIAC is the University of New Mexico School of Engineering’s aerospace research center. I work there with a team of students and engineers on software-defined radio, embedded systems, and satellite simulation.</p>
+        </div>
+        <div class="two-up">
+          <figure>
+            <img class="team" src="images/cosmiac-team.jpg" width="1800" height="1350" loading="lazy"
+                 alt="Benjamin Webster and his COSMIAC teammates holding a signed CaveCube 3 banner, with a satellite testbed on the table in front of them">
+            <figcaption>My team at COSMIAC.</figcaption>
+          </figure>
+          <figure>
+            <img src="images/satellite-testbed.jpg" width="1600" height="995" loading="lazy"
+                 alt="Open aluminum frame of a satellite testbed full of circuit boards and wiring, with a software-defined radio, network router, and connector panel laid out beside it">
+            <figcaption>A satellite testbed my team and I built for cybersecurity testing.</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
     <!-- ===================== SATELLITE TRACKER ===================== -->
-    <section class="tracker" id="tracker" aria-labelledby="tracker-title">
+    <section class="panel tracker" id="tracker" aria-labelledby="tracker-title">
       <div class="wrap">
         <div class="tracker-head">
           <div class="section-head">
@@ -200,6 +215,28 @@
         </div>
       </div>
     </section>
+
+    <!-- ===================== OUTSIDE THE LAB ===================== -->
+    <section class="panel showcase" id="outside" aria-labelledby="outside-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="outside-title">Outside the lab</h2>
+          <p>I climb outdoors and compete indoors.</p>
+        </div>
+        <div class="two-up">
+          <figure>
+            <img src="images/climbing-rappel.jpg" width="1400" height="933" loading="lazy"
+                 alt="Benjamin rappelling down a tall orange rock face against a blue sky">
+            <figcaption>Rappelling down a cliff face.</figcaption>
+          </figure>
+          <figure>
+            <img src="images/climbing-competition.jpg" width="1400" height="933" loading="lazy"
+                 alt="Benjamin sitting on a large black hold on an indoor bouldering wall, looking up at the route">
+            <figcaption>Taking a break mid-route at a climbing competition.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="contact" id="contact">
@@ -211,7 +248,7 @@
         <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/benjamin-webster-b11243381/" target="_blank" rel="noopener">benjamin-webster</a></dd></div>
         <div><dt>Résumé</dt><dd><a href="documents/Webster_Resume.pdf" target="_blank" rel="noopener">Webster_Resume.pdf</a></dd></div>
       </dl>
-      <p class="footnote">© 2026 Benjamin Webster. Personal portfolio; not an official University of New Mexico website.</p>
+      <p class="footnote">© 2026 Benjamin Webster. Personal portfolio; not an official University of New Mexico website. Background photo: Las Conchas in the Jemez Mountains, New Mexico.</p>
     </div>
   </footer>
 </body>

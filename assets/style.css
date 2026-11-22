@@ -30,13 +30,27 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--paper);
+  background: #7a7458;   /* shown while the background photo loads */
   color: var(--ink);
   font-family: var(--sans);
   font-size: 1.0625rem;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
+
+/* Las Conchas photo behind every page. A fixed layer (instead of background-attachment: fixed)
+   so it also stays put on iPhones and iPads. */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1;
+  background: url("../images/las-conchas.jpg") center 35% / cover no-repeat;
+}
+main { display: block; padding: 3.5rem 1.5rem 4rem; }
+.panel {
+  max-width: 1260px; margin: 0 auto 2.5rem;
+  background: var(--paper);
+  box-shadow: 0 1rem 2.5rem rgba(24, 26, 20, 0.3);
+}
+.panel:last-child { margin-bottom: 0; }
 
 a { color: var(--cherry); text-underline-offset: 0.2em; }
 a:hover { color: var(--cherry-dark); }
@@ -111,14 +125,16 @@ a:hover { color: var(--cherry-dark); }
   background: var(--cherry);
   color: var(--paper);
 }
+.band.panel {
+  background: var(--cherry); box-shadow: none;
+  /* Stepped roofline from UNM's Pueblo Revival buildings, cut out of the top edge */
+  clip-path: polygon(0 2.75rem, 9.72% 2.75rem, 9.72% 2.125rem, 20.83% 2.125rem, 20.83% 2.75rem,
+    36.11% 2.75rem, 36.11% 1.625rem, 39.58% 1.625rem, 39.58% 0.625rem, 45.83% 0.625rem, 45.83% 1.625rem,
+    49.31% 1.625rem, 49.31% 2.75rem, 76.39% 2.75rem, 76.39% 2.125rem, 85.42% 2.125rem, 85.42% 2.75rem,
+    100% 2.75rem, 100% 100%, 0 100%);
+}
 .band :focus-visible { outline-color: var(--paper); }
 
-/* Stepped roofline drawn from the parapets of UNM's Pueblo Revival buildings */
-.parapet {
-  position: absolute; left: 0; right: 0; top: -1px;
-  width: 100%; height: 3.5rem; display: block;
-}
-.parapet polygon { fill: var(--paper); }
 
 /* Home title page */
 .title-band { padding: 6rem 0 4.5rem; }
@@ -180,7 +196,7 @@ a:hover { color: var(--cherry-dark); }
 /* ---------- Section headings ---------- */
 .section-head h2 {
   margin: 0; font-family: var(--slab); font-weight: 700;
-  font-size: clamp(2.125rem, 4vw, 2.875rem); line-height: 1.1;
+  font-size: clamp(2.125rem, 4vw, 2.875rem); line-height: 1.1; color: var(--cherry);
 }
 .section-head p { margin: 0.75rem 0 0; color: var(--text-2); max-width: 64ch; }
 
@@ -217,15 +233,20 @@ a:hover { color: var(--cherry-dark); }
   background: var(--wash); font-size: 0.875rem; font-weight: 500; color: var(--text-2);
 }
 
-.team-photo { grid-column: 1 / -1; margin: 0; }
-.team-photo img {
-  display: block; width: 100%; height: auto; max-height: 34rem; object-fit: cover;
-  border: 8px solid var(--paper); box-shadow: 0 0.75rem 2rem rgba(38, 40, 43, 0.22);
+/* ---------- Photo sections (At COSMIAC, Outside the lab) ---------- */
+.showcase { padding: 4rem 0 4.5rem; }
+.two-up { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; margin-top: 2rem; }
+.two-up figure { margin: 0; }
+.two-up img {
+  display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover;
+  border-top: 4px solid var(--cherry); background: var(--silver-light);
 }
-.team-photo figcaption { margin-top: 0.75rem; font-size: 0.9375rem; color: var(--text-2); }
+.two-up img.team { object-position: 50% 72%; }    /* keep faces, trim the ceiling */
+.two-up figcaption { margin-top: 0.75rem; font-size: 0.9375rem; color: var(--text-2); }
 
 /* ---------- Satellite tracker ---------- */
-.tracker { padding: 4rem 0 4.5rem; background: var(--wash); border-top: 1px solid var(--silver-light); }
+.tracker { padding: 4rem 0 4.5rem; }
+.tracker.panel { background: var(--wash); }
 .tracker-head {
   display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1.5rem;
 }
@@ -419,10 +440,12 @@ a:hover { color: var(--cherry-dark); }
   .page-band { padding: 4rem 0 2rem; }
   .title-grid { grid-template-columns: 1fr; gap: 2rem; }
   .orbit-shot { width: min(100%, 19rem); }
+  main { padding: 2.5rem 0.75rem 2.5rem; }
+  .panel { margin-bottom: 1.5rem; }
+  .two-up { grid-template-columns: 1fr; gap: 1.5rem; }
   .about-grid { grid-template-columns: 1fr; }
   .photo { width: 11rem; }
   .brand-meta { display: none; }
-  .parapet { height: 2.25rem; }
   .readout { display: block; }
   .doc-intro { grid-template-columns: 1fr; }
   .viewer { height: 70vh; }
