@@ -7,8 +7,8 @@
   <meta name="description" content="Technical writing portfolio of Benjamin Webster, Computer Science and Computer Engineering student at the University of New Mexico.">
   <link rel="preconnect" href="https://fonts.bunny.net">
   <link rel="stylesheet" href="https://fonts.bunny.net/css?family=zilla-slab:500,600,700|montserrat:400,500,600,700&display=swap">
-  <link rel="stylesheet" href="assets/style.css?v=9">
-  <script src="assets/tracker.js?v=9" defer></script>
+  <link rel="stylesheet" href="assets/style.css?v=10">
+  <script src="assets/site.js?v=10" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to main content</a>
@@ -24,8 +24,7 @@
     <nav class="site-nav" aria-label="Site">
       <div class="wrap nav-row">
         <a href="index.html" aria-current="page">Home</a>
-        <a href="index.html#tracker">Satellite tracker</a>
-        <a href="projects.html">Projects</a>
+        <a href="tracker.html">Satellite tracker</a>
         <div class="menu">
           <a href="outcomes-memo.html">Documents<svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
           <ul class="menu-list" aria-label="Portfolio documents">
@@ -100,87 +99,48 @@
         <figure class="climb-photo">
           <img src="images/climbing-rappel.jpg" width="1400" height="933" loading="lazy"
                alt="Benjamin rappelling down a tall orange rock face against a blue sky">
-          <figcaption>Outside the lab, I climb. Here I’m rappelling down a cliff face.</figcaption>
+          <figcaption>Forrest 5.10/c</figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- ===================== SATELLITE TRACKER ===================== -->
-    <section class="panel tracker" id="tracker" aria-labelledby="tracker-title">
+    <!-- ===================== AT COSMIAC ===================== -->
+    <section class="panel showcase" id="cosmiac" aria-labelledby="cosmiac-title">
       <div class="wrap">
-        <div class="tracker-head">
-          <div class="tracker-intro">
-            <div class="section-head">
-              <h2 id="tracker-title">Live satellite tracker</h2>
-              <p>I built a ground station that receives weather-satellite images from the Meteor-M2 satellites near 137&nbsp;MHz. This map shows where they and two other satellites are right now, calculated in your browser from their latest published orbits.</p>
-            </div>
-            <p class="station-status" id="station-status">My antenna receives Meteor-M2 passes over Albuquerque. Checking for the next one…</p>
-            <div class="sat-picker" id="sat-picker" role="group" aria-label="Choose a satellite"></div>
-          </div>
-          <!-- Antenna photo: save it as images/antenna.jpg. If the file is missing, this figure hides itself. -->
-          <figure class="antenna">
-            <img src="images/antenna.jpg" alt="The QFH antenna Benjamin built for receiving 137 MHz weather-satellite signals"
-                 onerror="this.closest('figure').hidden = true;">
-            <figcaption>The QFH antenna I built and tuned for 137&nbsp;MHz. With an SDR, a Raspberry Pi, and SatDump, it receives and decodes Meteor-M2 images.</figcaption>
+        <div class="section-head">
+          <h2 id="cosmiac-title">At COSMIAC</h2>
+          <p>COSMIAC is the University of New Mexico School of Engineering’s aerospace research center. I work there with a team of students and engineers on software-defined radio, embedded systems, and satellite simulation, including orbital dynamics models in Ansys STK.</p>
+        </div>
+        <div class="two-up">
+          <figure>
+            <img class="team" src="images/cosmiac-team.jpg" width="1800" height="1350" loading="lazy"
+                 alt="Benjamin Webster and his COSMIAC teammates holding a signed CaveCube 3 banner, with a satellite testbed on the table in front of them">
+            <figcaption>My team at COSMIAC.</figcaption>
+          </figure>
+          <figure>
+            <img src="images/satellite-testbed.jpg" width="1600" height="995" loading="lazy"
+                 alt="Open aluminum frame of a satellite testbed full of circuit boards and wiring, with a software-defined radio, network router, and connector panel laid out beside it">
+            <figcaption>A satellite testbed my team and I built for cybersecurity testing.</figcaption>
           </figure>
         </div>
-
-        <div class="tracker-body">
-          <div>
-            <div class="map-frame">
-              <svg class="map" id="map" viewBox="0 0 1000 500" role="img" aria-labelledby="map-title">
-                <title id="map-title">World map with the selected satellite’s position, ground track, and coverage area</title>
-                <defs><clipPath id="map-clip"><rect width="1000" height="500"/></clipPath></defs>
-                <rect class="ocean" width="1000" height="500"/>
-                <g class="grid" id="map-grid"></g>
-                <path class="land" id="map-land" d=""/>
-                <path class="night" id="map-night" d=""/>
-                <g clip-path="url(#map-clip)">
-                  <path class="footprint" id="map-footprint" d=""/>
-                  <path class="track-past" id="map-track-past" d=""/>
-                  <path class="track-next" id="map-track-next" d=""/>
-                </g>
-                <g id="map-station"></g>
-                <g id="map-others"></g>
-                <g id="map-sat"></g>
-              </svg>
-            </div>
-            <ul class="map-key">
-              <li><span class="key-line" aria-hidden="true"></span>Last 50 minutes</li>
-              <li><span class="key-line dashed" aria-hidden="true"></span>Next 95 minutes</li>
-              <li><span class="key-area" aria-hidden="true"></span>Area that can see the satellite</li>
-              <li><span class="key-night" aria-hidden="true"></span>Night</li>
-            </ul>
-            <p class="tracker-status" id="tracker-status">Loading orbit data…</p>
-          </div>
-
-          <aside class="readout" aria-label="Selected satellite details">
-            <div>
-              <h3 id="ro-name">International Space Station</h3>
-              <p class="sat-note" id="ro-note"></p>
-            </div>
-            <dl>
-              <div><dt>Latitude</dt><dd id="ro-lat">—</dd></div>
-              <div><dt>Longitude</dt><dd id="ro-lon">—</dd></div>
-              <div><dt>Altitude</dt><dd id="ro-alt">—</dd></div>
-              <div><dt>Speed</dt><dd id="ro-spd">—</dd></div>
-            </dl>
-            <div class="pass-block">
-              <h4>Passes over Albuquerque</h4>
-              <p class="pass-text" id="ro-pass">Loading orbit data…</p>
-              <svg class="skyplot" viewBox="-24 -24 248 248" role="img" aria-labelledby="sky-title">
-                <title id="sky-title">Sky view from Albuquerque of the satellite’s next pass, north at top</title>
-                <g id="sky-grid"></g>
-                <path class="pass" id="sky-pass" d=""/>
-                <circle class="aos" id="sky-aos" r="4" cx="-99" cy="-99"/>
-                <circle class="now" id="sky-now" r="5.5" cx="-99" cy="-99"/>
-              </svg>
-            </div>
-          </aside>
+        <div class="two-up">
+          <figure>
+            <video class="sim" src="videos/stk-leo-eoir-tracking.mp4" poster="videos/stk-leo-eoir-tracking.jpg"
+                   muted loop playsinline controls preload="none" width="1280" height="720"
+                   aria-label="Simulation of a satellite in low Earth orbit pointing its sensor at another satellite over North America"></video>
+            <figcaption>Ansys STK simulation: a tracker satellite in low Earth orbit points its electro-optical/infrared (EO/IR) sensor at another satellite, with live position, velocity, and pointing data.</figcaption>
+          </figure>
+          <figure>
+            <video class="sim" src="videos/stk-geo-abs2a.mp4" poster="videos/stk-geo-abs2a.jpg"
+                   muted loop playsinline controls preload="none" width="1008" height="824"
+                   aria-label="Animation of a geostationary satellite's path traced over Earth in a fixed reference grid"></video>
+            <figcaption>Ansys STK animation following the geostationary satellite ABS-2A/MongolSat-1 in an Earth-fixed view from April to June 2026, showing how its position moves over time.</figcaption>
+          </figure>
         </div>
       </div>
     </section>
-    </main>
+
+  </main>
 
   <footer class="contact" id="contact">
     <div class="wrap">

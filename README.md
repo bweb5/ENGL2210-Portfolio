@@ -6,12 +6,12 @@ A multi-page portfolio site for ENGL 2210 in UNM cherry and silver, ready for Gi
 
 | File | What it is |
 |------|------------|
-| `index.html` | Home page: title and Meteor-M2 image, About me (headshot, bio, ECE / CS / COSMIAC logos, rappelling photo), and the live satellite tracker with your antenna |
-| `projects.html` | **Projects** in the menu bar: At COSMIAC (team photo, testbed, two STK simulation videos) and Power electronics at UNM ECE (inverter work) |
+| `index.html` | Home page: title and Meteor-M2 image, About me (headshot, bio, ECE / CS / COSMIAC logos, rappelling photo), and At COSMIAC (team photo, testbed, two STK simulation videos) |
+| `tracker.html` | **Satellite tracker** in the menu bar: the live map, satellite details, next Meteor-M2 pass, and your antenna photo |
 | `outcomes-memo.html` … `recommendations-report.html` | One page per assignment, each showing the document inline. The **Documents** menu in the red menu bar lists all nine on hover, so every document is one click from any page |
 | `assets/` | Shared styles (`style.css`), the document viewer (`site.js`), and the tracker (`tracker.js`) |
 | `documents/` | Your PDFs: six of the nine are already here (see the table below) |
-| `videos/` | The two STK simulation videos for the COSMIAC section, compressed for the web, with poster images |
+| `videos/` | The two STK simulation videos for the At COSMIAC section on the home page, compressed for the web, with poster images |
 | `images/` | All your photos (included, resized for the web with location and camera data removed), plus the three logos you add |
 | `data/` | Satellite orbit data, filled in automatically by the GitHub Action |
 | `.github/workflows/update-tle.yml` | GitHub Action that refreshes the orbit data twice a day |
@@ -28,12 +28,8 @@ A multi-page portfolio site for ENGL 2210 in UNM cherry and silver, ready for Gi
 | Satellite testbed | `satellite-testbed.jpg` |
 | Rappelling (bottom of About me) | `climbing-rappel.jpg` |
 | Meteor-M2 image (title section) | `meteor-australia-hero.jpg`, full size `meteor-australia.jpg` |
-| LabVIEW FPGA diagram (UNM ECE) | `ece-labview-fpga.png` |
-| Power lab bench (UNM ECE) | `ece-power-lab.jpg` |
-| Three-phase inverter (UNM ECE) | `ece-inverter.jpg` |
-| Oscilloscope, 60 Hz output (UNM ECE) | `ece-scope-60hz.jpg` |
 
-**Antenna photo (still needed).** Save the photo of your QFH antenna as `images/antenna.jpg`. It appears next to the satellite tracker, beside a live line that shows the next Meteor-M2 pass over Albuquerque. Until the file is there, the photo spot hides itself.
+**Antenna photo (still needed).** Save the photo of your QFH antenna as `images/antenna.jpg`. It appears on the Satellite tracker page, beside a live line that shows the next Meteor-M2 pass over Albuquerque. Until the file is there, the photo spot hides itself.
 
 Captions are in `index.html`, next to each `<figcaption>`.
 
@@ -71,7 +67,7 @@ If a file is missing, its page says "Missing" and hides the open and download bu
 3. Go to **Settings → Pages**. Set **Source** to *Deploy from a branch*, choose **main** and **/ (root)**, and click **Save**.
 4. Your site will be live at `https://YOUR-USERNAME.github.io/portfolio/` within a couple of minutes. That's the link you submit in Canvas.
 
-**Updating an existing site:** upload *every* file again, including the `assets` folder, so the pages and the stylesheet match. If the site still looks like an old version, press Ctrl+Shift+R (Cmd+Shift+R on a Mac) to skip the browser's cache. The pages load `style.css?v=9`; if you ever edit `style.css` or a script yourself, change that number in every page so browsers fetch the new copy.
+**Updating an existing site:** upload *every* file again, including the `assets` folder, so the pages and the stylesheet match. If the site still looks like an old version, press Ctrl+Shift+R (Cmd+Shift+R on a Mac) to skip the browser's cache. The pages load `style.css?v=10`; if you ever edit `style.css` or a script yourself, change that number in every page so browsers fetch the new copy.
 
 ## 3. Turn on the satellite tracker's data feed
 
@@ -79,7 +75,7 @@ The tracker calculates positions in the browser from each satellite's two-line e
 
 1. Open the **Actions** tab of your repository. If GitHub asks, click **I understand my workflows, go ahead and enable them**.
 2. Click **Update satellite orbit data**, then **Run workflow**. In about 30 seconds it adds `data/tle.txt` and `data/land-110m.json` (the world map outline).
-3. Reload your site. The status line under the map says where the data came from and when it was published.
+3. Open the Satellite tracker page. The status line under the map says where the data came from and when it was published.
 
 If the Action isn't running, the tracker tries CelesTrak and two backup sources directly from the browser. If those fail too, it says so instead of showing wrong positions.
 
