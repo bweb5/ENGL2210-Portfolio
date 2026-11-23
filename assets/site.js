@@ -52,11 +52,12 @@
       var m = document.createElement("div");
       m.className = "viewer-missing";
       var s = document.createElement("strong");
-      s.textContent = "This document hasn’t been uploaded yet.";
-      var p = document.createElement("span");
-      p.textContent = "Add " + src + " to the site to show it here.";
-      m.appendChild(s); m.appendChild(p);
+      s.textContent = "Missing";
+      m.appendChild(s);
       box.appendChild(m);
+      // The open and download buttons would lead nowhere, so hide them.
+      var actions = document.querySelector(".doc-actions");
+      if (actions) actions.hidden = true;
     }
 
     // Opened straight from disk (file://): browsers block fetch, so just embed.
@@ -101,10 +102,8 @@
       var m = document.createElement("div");
       m.className = "viewer-missing";
       var s = document.createElement("strong");
-      s.textContent = "This video hasn’t been added yet.";
-      var p = document.createElement("span");
-      p.textContent = "Add a YouTube video ID in video-instructions.html, or upload " + mp4 + ".";
-      m.appendChild(s); m.appendChild(p);
+      s.textContent = "Missing";
+      m.appendChild(s);
       frame.appendChild(m);
     });
     frame.appendChild(v);

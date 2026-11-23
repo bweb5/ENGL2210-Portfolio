@@ -6,7 +6,8 @@ A multi-page portfolio site for ENGL 2210 in UNM cherry and silver, ready for Gi
 
 | File | What it is |
 |------|------------|
-| `index.html` | Home page about you: title and Meteor-M2 image, headshot and bio, ECE / CS / COSMIAC logos, At COSMIAC (team photo, testbed, and two STK simulation videos), live satellite tracker with your antenna, Power electronics at UNM ECE (inverter work), and Outside the lab (climbing photos) |
+| `index.html` | Home page: title and Meteor-M2 image, About me (headshot, bio, ECE / CS / COSMIAC logos, rappelling photo), and the live satellite tracker with your antenna |
+| `projects.html` | **Projects** in the menu bar: At COSMIAC (team photo, testbed, two STK simulation videos) and Power electronics at UNM ECE (inverter work) |
 | `outcomes-memo.html` … `recommendations-report.html` | One page per assignment, each showing the document inline. The **Documents** menu in the red menu bar lists all nine on hover, so every document is one click from any page |
 | `assets/` | Shared styles (`style.css`), the document viewer (`site.js`), and the tracker (`tracker.js`) |
 | `documents/` | Your PDFs: six of the nine are already here (see the table below) |
@@ -25,8 +26,7 @@ A multi-page portfolio site for ENGL 2210 in UNM cherry and silver, ready for Gi
 | Headshot | `headshot.jpg` |
 | COSMIAC team | `cosmiac-team.jpg` |
 | Satellite testbed | `satellite-testbed.jpg` |
-| Rappelling | `climbing-rappel.jpg` |
-| Climbing competition | `climbing-competition.jpg` |
+| Rappelling (bottom of About me) | `climbing-rappel.jpg` |
 | Meteor-M2 image (title section) | `meteor-australia-hero.jpg`, full size `meteor-australia.jpg` |
 | LabVIEW FPGA diagram (UNM ECE) | `ece-labview-fpga.png` |
 | Power lab bench (UNM ECE) | `ece-power-lab.jpg` |
@@ -37,16 +37,7 @@ A multi-page portfolio site for ENGL 2210 in UNM cherry and silver, ready for Gi
 
 Captions are in `index.html`, next to each `<figcaption>`.
 
-**Logos.** Save the three logos in `images/` with these names. PNG with a transparent or white background works best; any width is fine.
-
-| Logo | File name | Links to |
-|------|-----------|----------|
-| UNM Electrical & Computer Engineering | `logo-unm-ece.png` | ece.unm.edu |
-| UNM Computer Science | `logo-unm-cs.png` | cs.unm.edu |
-| COSMIAC | `logo-cosmiac.png` | cosmiac.unm.edu |
-
-Until a logo file is there, its tile shows the name in text, so the page still looks finished. UNM's logos are registered marks with usage rules (see brand.unm.edu), and COSMIAC's is your employer's, so it's worth a quick check with the department and COSMIAC before publishing them.
-
+**Logos (already included).** `logo-unm-ece.png`, `logo-unm-cs.png`, and `logo-cosmiac.png` are in `images/`, trimmed of extra white space. The COSMIAC one is the orange wordmark from the image you sent. They show as plain images, not links.
 
 **Documents.** Six are already converted to PDF and in `documents/`. The Word files were converted with LibreOffice; if any page looks different from Word, open the original in Word, choose File > Save As > PDF, and replace the file with the same name. GitHub Pages is case-sensitive.
 
@@ -59,14 +50,14 @@ Until a logo file is there, its tile shows the name in text, so the page still l
 | 5 | `postmortem-report.html` | `Webster_Postmortem_PowerPoint_Report.pdf` | Included |
 | 6 | `emergency-instructions.html` | `Webster_Emergency_Instructions.pdf` | Included |
 | 7 | `written-instructions.html` | `Webster_Written_Instructions_MWA1.pdf` | Included |
-| 8 | `video-instructions.html` | YouTube, or `Webster_Video_Instructions_MWA1.mp4` | **Still needed** |
+| 8 | `video-instructions.html` | YouTube video `lWY4owxDl14` | Included |
 | 9 | `recommendations-report.html` | `Webster_Recommendations_Report.pdf` | **Still needed** |
 
-If a file is missing, its page says "This document hasn't been uploaded yet" instead of breaking.
+If a file is missing, its page says "Missing" and hides the open and download buttons.
 
-**Video.** Upload the video to YouTube as **Unlisted** and copy the ID from the link (in `youtube.com/watch?v=AbC123xYz`, the ID is `AbC123xYz`). In `video-instructions.html`, find `data-youtube-id=""` and paste the ID between the quotes. To host the file yourself instead, leave the ID empty and add the MP4 to `documents/`. GitHub rejects files over 100 MB.
+**Video.** Document 8 plays your YouTube video (`youtu.be/lWY4owxDl14`). Make sure it's set to Public or Unlisted, not Private, or it won't play on the site. To swap it, change `data-youtube-id` in `video-instructions.html`.
 
-**Descriptions.** Each assignment page has a short description, marked with an `<!-- Edit this description -->` comment. Documents 2 through 7 are now described from their actual content. Documents 1, 8, and 9 still have general descriptions; update them when you add those files.
+**Descriptions.** Each assignment page has a short description, marked with an `<!-- Edit this description -->` comment. Documents 2 through 7 are now described from their actual content. Documents 1, 8, and 9 still have general descriptions; update them if you like.
 
 `Webster_Resume.pdf` is linked in the footer of every page. It includes your phone number; delete the file and the footer link if you don't want that public.
 
@@ -80,7 +71,7 @@ If a file is missing, its page says "This document hasn't been uploaded yet" ins
 3. Go to **Settings → Pages**. Set **Source** to *Deploy from a branch*, choose **main** and **/ (root)**, and click **Save**.
 4. Your site will be live at `https://YOUR-USERNAME.github.io/portfolio/` within a couple of minutes. That's the link you submit in Canvas.
 
-**Updating an existing site:** upload *every* file again, including the `assets` folder, so the pages and the stylesheet match. If the site still looks like an old version, press Ctrl+Shift+R (Cmd+Shift+R on a Mac) to skip the browser's cache. The pages load `style.css?v=7`; if you ever edit `style.css` or a script yourself, change that number in every page so browsers fetch the new copy.
+**Updating an existing site:** upload *every* file again, including the `assets` folder, so the pages and the stylesheet match. If the site still looks like an old version, press Ctrl+Shift+R (Cmd+Shift+R on a Mac) to skip the browser's cache. The pages load `style.css?v=9`; if you ever edit `style.css` or a script yourself, change that number in every page so browsers fetch the new copy.
 
 ## 3. Turn on the satellite tracker's data feed
 
@@ -99,7 +90,6 @@ GitHub pauses scheduled Actions on repositories with no activity for 60 days. If
 ## 4. Check before you submit (due Fri, Dec 4, 11:59 pm)
 
 - [ ] COSMIAC is OK with the team photo and the testbed photo being public, and your teammates are fine with being on the site.
-- [ ] The three logos show (or you've decided to keep the text tiles).
 - [ ] All nine assignment pages show their documents, including the video.
 - [ ] The tracker shows satellites and a "next pass" time.
 - [ ] Every description names your real content.

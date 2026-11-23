@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects | Benjamin Webster</title>
+  <meta name="description" content="Benjamin Webster&#x27;s engineering projects at COSMIAC and UNM ECE: satellite testbeds, orbital simulations, and three-phase inverter control.">
+  <link rel="preconnect" href="https://fonts.bunny.net">
+  <link rel="stylesheet" href="https://fonts.bunny.net/css?family=zilla-slab:500,600,700|montserrat:400,500,600,700&display=swap">
+  <link rel="stylesheet" href="assets/style.css?v=9">
+  <script src="assets/site.js?v=9" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap brand-row">
+      <a class="brand" href="index.html">
+        <span class="brand-name">Benjamin Webster</span>
+        <span class="brand-sub">Computer Science and Computer Engineering, University of New Mexico</span>
+      </a>
+      <p class="brand-meta">English 2210 Portfolio<br>Fall 2026</p>
+    </div>
+    <nav class="site-nav" aria-label="Site">
+      <div class="wrap nav-row">
+        <a href="index.html">Home</a>
+        <a href="index.html#tracker">Satellite tracker</a>
+        <a href="projects.html" aria-current="page">Projects</a>
+        <div class="menu">
+          <a href="outcomes-memo.html">Documents<svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
+          <ul class="menu-list" aria-label="Portfolio documents">
+              <li><a href="outcomes-memo.html"><span class="n">1</span>Portfolio Outcomes Memo</a></li>
+              <li><a href="club-memo.html"><span class="n">2</span>UNM Club Memo</a></li>
+              <li><a href="club-complaint-letter.html"><span class="n">3</span>UNM Club Complaint Letter</a></li>
+              <li><a href="club-flyer.html"><span class="n">4</span>UNM Club Flyer</a></li>
+              <li><a href="postmortem-report.html"><span class="n">5</span>Postmortem PowerPoint Report</a></li>
+              <li><a href="emergency-instructions.html"><span class="n">6</span>Emergency Instructions</a></li>
+              <li><a href="written-instructions.html"><span class="n">7</span>Written Instructions (MWA 1)</a></li>
+              <li><a href="video-instructions.html"><span class="n">8</span>Video Instructions (MWA 1)</a></li>
+              <li><a href="recommendations-report.html"><span class="n">9</span>Recommendations Report</a></li>
+          </ul>
+        </div>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="panel band page-band" aria-labelledby="page-title">
+      
+      <div class="wrap">
+        <h1 id="page-title">Projects</h1>
+        <p class="doc-kind">Satellite and power electronics work at COSMIAC and UNM Electrical and Computer Engineering</p>
+      </div>
+    </section>
+
+    <!-- ===================== AT COSMIAC ===================== -->
+    <section class="panel showcase" id="cosmiac" aria-labelledby="cosmiac-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="cosmiac-title">At COSMIAC</h2>
+          <p>COSMIAC is the University of New Mexico School of Engineering’s aerospace research center. I work there with a team of students and engineers on software-defined radio, embedded systems, and satellite simulation, including orbital dynamics models in Ansys STK.</p>
+        </div>
+        <div class="two-up">
+          <figure>
+            <img class="team" src="images/cosmiac-team.jpg" width="1800" height="1350" loading="lazy"
+                 alt="Benjamin Webster and his COSMIAC teammates holding a signed CaveCube 3 banner, with a satellite testbed on the table in front of them">
+            <figcaption>My team at COSMIAC.</figcaption>
+          </figure>
+          <figure>
+            <img src="images/satellite-testbed.jpg" width="1600" height="995" loading="lazy"
+                 alt="Open aluminum frame of a satellite testbed full of circuit boards and wiring, with a software-defined radio, network router, and connector panel laid out beside it">
+            <figcaption>A satellite testbed my team and I built for cybersecurity testing.</figcaption>
+          </figure>
+        </div>
+        <div class="two-up">
+          <figure>
+            <video class="sim" src="videos/stk-leo-eoir-tracking.mp4" poster="videos/stk-leo-eoir-tracking.jpg"
+                   muted loop playsinline controls preload="none" width="1280" height="720"
+                   aria-label="Simulation of a satellite in low Earth orbit pointing its sensor at another satellite over North America"></video>
+            <figcaption>Ansys STK simulation: a tracker satellite in low Earth orbit points its electro-optical/infrared (EO/IR) sensor at another satellite, with live position, velocity, and pointing data.</figcaption>
+          </figure>
+          <figure>
+            <video class="sim" src="videos/stk-geo-abs2a.mp4" poster="videos/stk-geo-abs2a.jpg"
+                   muted loop playsinline controls preload="none" width="1008" height="824"
+                   aria-label="Animation of a geostationary satellite's path traced over Earth in a fixed reference grid"></video>
+            <figcaption>Ansys STK animation following the geostationary satellite ABS-2A/MongolSat-1 in an Earth-fixed view from April to June 2026, showing how its position moves over time.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===================== UNM ECE ===================== -->
+    <section class="panel showcase" id="ece" aria-labelledby="ece-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="ece-title">Power electronics at UNM ECE</h2>
+          <p>Before COSMIAC, I was a research assistant in UNM’s Department of Electrical and Computer Engineering, designing real-time FPGA control for a three-phase power inverter with LabVIEW and National Instruments hardware.</p>
+        </div>
+        <figure class="wide-figure">
+          <a href="images/ece-labview-fpga.png" target="_blank" rel="noopener">
+            <img src="images/ece-labview-fpga.png" width="2163" height="1204" loading="lazy"
+                 alt="LabVIEW FPGA block diagram with a timed loop, a lookup table, phase comparisons, and six digital outputs labeled RMC/Half-Bridge DO0 through DO5">
+            <span class="sr-only">(opens full size)</span>
+          </a>
+          <figcaption>My LabVIEW FPGA code. On each timer tick it steps through a 1,024-entry lookup table and compares the value against each phase to drive complementary switching signals for the inverter’s three half-bridges. Click to enlarge.</figcaption>
+        </figure>
+        <div class="three-up">
+          <figure>
+            <a href="images/ece-power-lab.jpg" target="_blank" rel="noopener">
+              <img src="images/ece-power-lab.jpg" width="1179" height="1581" loading="lazy" class="pos-lab"
+                   alt="Power lab with an OPAL-RT real-time simulator rack, an open inverter cabinet, a 220-volt dummy load, and a controller board on a table">
+              <span class="sr-only">(opens full size)</span>
+            </a>
+            <figcaption>The power lab: an OPAL-RT real-time simulator, the inverter cabinet, and a 220 V dummy load, with the interface board on the bench.</figcaption>
+          </figure>
+          <figure>
+            <a href="images/ece-inverter.jpg" target="_blank" rel="noopener">
+              <img src="images/ece-inverter.jpg" width="1179" height="1567" loading="lazy"
+                   alt="Three-phase inverter with large film capacitors, power modules, and a cooling fan, cabled to a green interface board">
+              <span class="sr-only">(opens full size)</span>
+            </a>
+            <figcaption>The three-phase inverter, with its capacitor bank and cooling fan, cabled to the interface board.</figcaption>
+          </figure>
+          <figure>
+            <a href="images/ece-scope-60hz.jpg" target="_blank" rel="noopener">
+              <img src="images/ece-scope-60hz.jpg" width="1179" height="878" loading="lazy" class="pos-scope"
+                   alt="Oscilloscope showing a sine wave measured at 60.047 hertz and 19.3 volts peak to peak">
+              <span class="sr-only">(opens full size)</span>
+            </a>
+            <figcaption>Inverter output on the oscilloscope: a 60.05 Hz sine wave, 19.3 V peak to peak.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="contact" id="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <dl class="contact-list">
+        <div><dt>Email</dt><dd><a href="mailto:benwebster567@gmail.com">benwebster567@gmail.com</a></dd></div>
+        <div><dt>UNM email</dt><dd><a href="mailto:bwebster1@unm.edu">bwebster1@unm.edu</a></dd></div>
+        <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/benjamin-webster-b11243381/" target="_blank" rel="noopener">benjamin-webster</a></dd></div>
+        <div><dt>Résumé</dt><dd><a href="documents/Webster_Resume.pdf" target="_blank" rel="noopener">Webster_Resume.pdf</a></dd></div>
+      </dl>
+      <p class="footnote">© 2026 Benjamin Webster. Personal portfolio; not an official University of New Mexico website. Background photo: Las Conchas in the Jemez Mountains, New Mexico.</p>
+    </div>
+  </footer>
+</body>
+</html>
