@@ -7,8 +7,9 @@
   <meta name="description" content="Technical writing portfolio of Benjamin Webster, Computer Science and Computer Engineering student at the University of New Mexico.">
   <link rel="preconnect" href="https://fonts.bunny.net">
   <link rel="stylesheet" href="https://fonts.bunny.net/css?family=zilla-slab:500,600,700|montserrat:400,500,600,700&display=swap">
-  <link rel="stylesheet" href="assets/style.css?v=6">
-  <script src="assets/tracker.js?v=6" defer></script>
+  <link rel="stylesheet" href="assets/style.css?v=7">
+  <script src="assets/tracker.js?v=7" defer></script>
+  <script src="assets/site.js?v=7" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to main content</a>
@@ -132,7 +133,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2 id="cosmiac-title">At COSMIAC</h2>
-          <p>COSMIAC is the University of New Mexico School of Engineering’s aerospace research center. I work there with a team of students and engineers on software-defined radio, embedded systems, and satellite simulation.</p>
+          <p>COSMIAC is the University of New Mexico School of Engineering’s aerospace research center. I work there with a team of students and engineers on software-defined radio, embedded systems, and satellite simulation, including orbital dynamics models in Ansys STK.</p>
         </div>
         <div class="two-up">
           <figure>
@@ -146,6 +147,20 @@
             <figcaption>A satellite testbed my team and I built for cybersecurity testing.</figcaption>
           </figure>
         </div>
+        <div class="two-up">
+          <figure>
+            <video class="sim" src="videos/stk-leo-eoir-tracking.mp4" poster="videos/stk-leo-eoir-tracking.jpg"
+                   muted loop playsinline controls preload="none" width="1280" height="720"
+                   aria-label="Simulation of a satellite in low Earth orbit pointing its sensor at another satellite over North America"></video>
+            <figcaption>Ansys STK simulation: a tracker satellite in low Earth orbit points its electro-optical/infrared (EO/IR) sensor at another satellite, with live position, velocity, and pointing data.</figcaption>
+          </figure>
+          <figure>
+            <video class="sim" src="videos/stk-geo-abs2a.mp4" poster="videos/stk-geo-abs2a.jpg"
+                   muted loop playsinline controls preload="none" width="1008" height="824"
+                   aria-label="Animation of a geostationary satellite's path traced over Earth in a fixed reference grid"></video>
+            <figcaption>Ansys STK animation following the geostationary satellite ABS-2A/MongolSat-1 in an Earth-fixed view from April to June 2026, showing how its position moves over time.</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
@@ -153,11 +168,20 @@
     <section class="panel tracker" id="tracker" aria-labelledby="tracker-title">
       <div class="wrap">
         <div class="tracker-head">
-          <div class="section-head">
-            <h2 id="tracker-title">Live satellite tracker</h2>
-            <p>At COSMIAC I simulate satellite missions, and I built a ground station that receives weather-satellite images near 137&nbsp;MHz. This map shows where four satellites are right now, calculated in your browser from their latest published orbits.</p>
+          <div class="tracker-intro">
+            <div class="section-head">
+              <h2 id="tracker-title">Live satellite tracker</h2>
+              <p>I built a ground station that receives weather-satellite images from the Meteor-M2 satellites near 137&nbsp;MHz. This map shows where they and two other satellites are right now, calculated in your browser from their latest published orbits.</p>
+            </div>
+            <p class="station-status" id="station-status">My antenna receives Meteor-M2 passes over Albuquerque. Checking for the next one…</p>
+            <div class="sat-picker" id="sat-picker" role="group" aria-label="Choose a satellite"></div>
           </div>
-          <div class="sat-picker" id="sat-picker" role="group" aria-label="Choose a satellite"></div>
+          <!-- Antenna photo: save it as images/antenna.jpg. If the file is missing, this figure hides itself. -->
+          <figure class="antenna">
+            <img src="images/antenna.jpg" alt="The QFH antenna Benjamin built for receiving 137 MHz weather-satellite signals"
+                 onerror="this.closest('figure').hidden = true;">
+            <figcaption>The QFH antenna I built and tuned for 137&nbsp;MHz. With an SDR, a Raspberry Pi, and SatDump, it receives and decodes Meteor-M2 images.</figcaption>
+          </figure>
         </div>
 
         <div class="tracker-body">
@@ -212,6 +236,50 @@
               </svg>
             </div>
           </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== UNM ECE ===================== -->
+    <section class="panel showcase" id="ece" aria-labelledby="ece-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="ece-title">Power electronics at UNM ECE</h2>
+          <p>Before COSMIAC, I was a research assistant in UNM’s Department of Electrical and Computer Engineering, designing real-time FPGA control for a three-phase power inverter with LabVIEW and National Instruments hardware.</p>
+        </div>
+        <figure class="wide-figure">
+          <a href="images/ece-labview-fpga.png" target="_blank" rel="noopener">
+            <img src="images/ece-labview-fpga.png" width="2163" height="1204" loading="lazy"
+                 alt="LabVIEW FPGA block diagram with a timed loop, a lookup table, phase comparisons, and six digital outputs labeled RMC/Half-Bridge DO0 through DO5">
+            <span class="sr-only">(opens full size)</span>
+          </a>
+          <figcaption>My LabVIEW FPGA code. On each timer tick it steps through a 1,024-entry lookup table and compares the value against each phase to drive complementary switching signals for the inverter’s three half-bridges. Click to enlarge.</figcaption>
+        </figure>
+        <div class="three-up">
+          <figure>
+            <a href="images/ece-power-lab.jpg" target="_blank" rel="noopener">
+              <img src="images/ece-power-lab.jpg" width="1179" height="1581" loading="lazy" class="pos-lab"
+                   alt="Power lab with an OPAL-RT real-time simulator rack, an open inverter cabinet, a 220-volt dummy load, and a controller board on a table">
+              <span class="sr-only">(opens full size)</span>
+            </a>
+            <figcaption>The power lab: an OPAL-RT real-time simulator, the inverter cabinet, and a 220 V dummy load, with the interface board on the bench.</figcaption>
+          </figure>
+          <figure>
+            <a href="images/ece-inverter.jpg" target="_blank" rel="noopener">
+              <img src="images/ece-inverter.jpg" width="1179" height="1567" loading="lazy"
+                   alt="Three-phase inverter with large film capacitors, power modules, and a cooling fan, cabled to a green interface board">
+              <span class="sr-only">(opens full size)</span>
+            </a>
+            <figcaption>The three-phase inverter, with its capacitor bank and cooling fan, cabled to the interface board.</figcaption>
+          </figure>
+          <figure>
+            <a href="images/ece-scope-60hz.jpg" target="_blank" rel="noopener">
+              <img src="images/ece-scope-60hz.jpg" width="1179" height="878" loading="lazy" class="pos-scope"
+                   alt="Oscilloscope showing a sine wave measured at 60.047 hertz and 19.3 volts peak to peak">
+              <span class="sr-only">(opens full size)</span>
+            </a>
+            <figcaption>Inverter output on the oscilloscope: a 60.05 Hz sine wave, 19.3 V peak to peak.</figcaption>
+          </figure>
         </div>
       </div>
     </section>

@@ -512,6 +512,40 @@
     }
   }
 
+  /* ---------- Ground station: next Meteor-M2 pass over the antenna ---------- */
+  var METEORS = [57166, 59051];
+  state.meteorPasses = {};
+  function satLabel(id) { return SATS.filter(function (s) { return s.id === id; })[0].label; }
+  function updateStation(tMs) {
+    var box = $("station-status");
+    if (!box || !state.loaded) return;
+    var lead = "My antenna receives Meteor-M2 passes over Albuquerque. ";
+    var ids = METEORS.filter(function (id) { return state.orbits[id]; });
+    if (!ids.length) { box.textContent = lead + "Their orbit data isn’t available right now."; return; }
+    ids.forEach(function (id) {
+      var p = state.meteorPasses[id];
+      if (p === undefined || (p && (tMs > p.los || (tMs >= p.aos && !p.live)))) {
+        p = findPass(state.orbits[id], tMs);
+        if (p) p.live = tMs >= p.aos;
+        state.meteorPasses[id] = p;
+      }
+    });
+    var passes = ids.map(function (id) { return state.meteorPasses[id]; }).filter(Boolean);
+    var now = passes.filter(function (p) { return tMs >= p.aos && tMs <= p.los; })[0];
+    if (now) {
+      var la = lookAngles(satState(state.orbits[now.satId], tMs).ecef, STATION, OBS);
+      box.innerHTML = lead + "<strong>Passing now: " + satLabel(now.satId) + "</strong>, " + Math.max(0, Math.round(la.el)) +
+        "° above the horizon. It sets in " + dur(now.los - tMs) + ".";
+      return;
+    }
+    passes.sort(function (a, b) { return a.aos - b.aos; });
+    var n = passes[0];
+    box.innerHTML = n
+      ? lead + "<strong>Next pass: " + satLabel(n.satId) + ", " + timeFmt.format(new Date(n.aos)) + "</strong>, in " +
+        dur(n.aos - tMs) + ", up to " + Math.round(n.maxEl) + "° high."
+      : lead + "None are due in the next 48 hours.";
+  }
+
   /* ---------- Loop ---------- */
   function tick(force) {
     if (document.hidden && !force) return;
@@ -525,6 +559,7 @@
     if (o) drawFootprint(satState(o, t)); else $("map-footprint").setAttribute("d", "");
     drawMarkers(t);
     updateReadout(t);
+    updateStation(t);
   }
 
   function select(id) {

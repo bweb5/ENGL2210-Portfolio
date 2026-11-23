@@ -243,13 +243,47 @@ a:hover { color: var(--cherry-dark); }
 }
 .two-up img.team { object-position: 50% 72%; }    /* keep faces, trim the ceiling */
 .two-up figcaption { margin-top: 0.75rem; font-size: 0.9375rem; color: var(--text-2); }
+.two-up + .two-up { margin-top: 2.5rem; }
+.two-up video {
+  display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain;
+  background: #000; border-top: 4px solid var(--cherry);
+}
+
+/* Wide diagram plus a row of three photos (UNM ECE) */
+.wide-figure { margin: 2rem 0 0; }
+.wide-figure a, .three-up a { display: block; }
+.wide-figure img {
+  display: block; width: 100%; height: auto;
+  border: 1px solid var(--rule); border-top: 4px solid var(--cherry); background: var(--paper);
+}
+.wide-figure figcaption, .three-up figcaption { margin-top: 0.75rem; font-size: 0.9375rem; color: var(--text-2); max-width: 80ch; }
+.three-up { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; margin-top: 2.5rem; }
+.three-up figure { margin: 0; }
+.three-up img {
+  display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover;
+  border-top: 4px solid var(--cherry); background: var(--silver-light);
+}
+.three-up img.pos-scope { object-position: 37% 50%; }   /* keep the screen and the frequency readout */
+.wide-figure a:hover img, .three-up a:hover img { outline: 3px solid var(--cherry-tint); }
 
 /* ---------- Satellite tracker ---------- */
 .tracker { padding: 4rem 0 4.5rem; }
 .tracker.panel { background: var(--wash); }
 .tracker-head {
-  display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1.5rem;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2rem 3rem; align-items: start;
 }
+.station-status {
+  margin: 1.25rem 0 1.25rem; padding: 0.75rem 1rem; max-width: 64ch;
+  background: var(--paper); border-left: 4px solid var(--turquoise);
+  font-size: 0.9375rem; line-height: 1.55;
+}
+.station-status strong { font-variant-numeric: tabular-nums; }
+.antenna { margin: 0; width: 13.5rem; }
+.antenna img {
+  display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover;
+  border: 8px solid var(--paper); box-shadow: 0 0.75rem 2rem rgba(38, 40, 43, 0.22);
+}
+.antenna figcaption { margin-top: 0.75rem; font-size: 0.875rem; color: var(--text-2); }
 .sat-picker { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .sat-picker button {
   font: 600 0.875rem/1 var(--sans);
@@ -417,6 +451,7 @@ a:hover { color: var(--cherry-dark); }
   .tracker-body { grid-template-columns: 1fr; }
   .readout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 2rem; }
   .readout .pass-block { grid-column: 2; grid-row: 1 / span 3; }
+  .three-up { gap: 1.25rem; }
 }
 @media (max-width: 960px) {
   .about-grid { grid-template-columns: 12rem minmax(0, 1fr); gap: 2.5rem; }
@@ -443,6 +478,9 @@ a:hover { color: var(--cherry-dark); }
   main { padding: 2.5rem 0.75rem 2.5rem; }
   .panel { margin-bottom: 1.5rem; }
   .two-up { grid-template-columns: 1fr; gap: 1.5rem; }
+  .three-up { grid-template-columns: 1fr; gap: 1.5rem; }
+  .tracker-head { grid-template-columns: 1fr; }
+  .antenna { width: min(100%, 15rem); }
   .about-grid { grid-template-columns: 1fr; }
   .photo { width: 11rem; }
   .brand-meta { display: none; }

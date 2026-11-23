@@ -11,6 +11,28 @@
     }
   }
 
+  /* ---------- Simulation videos ----------
+     Muted loops that play only while on screen, so they don't use bandwidth
+     until someone scrolls to them. Visitors who ask for reduced motion get the
+     poster image and can press play themselves. */
+  var sims = document.querySelectorAll("video.sim");
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (sims.length && !reduceMotion && "IntersectionObserver" in window) {
+    var watcher = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var v = en.target;
+        if (en.isIntersecting) {
+          v.preload = "auto";
+          var playing = v.play();
+          if (playing && playing.catch) playing.catch(function () { /* autoplay blocked: controls still work */ });
+        } else if (!v.paused) {
+          v.pause();
+        }
+      });
+    }, { threshold: 0.4 });
+    Array.prototype.forEach.call(sims, function (v) { watcher.observe(v); });
+  }
+
   /* ---------- PDF viewer ----------
      <div class="viewer" data-pdf="documents/File.pdf" data-title="..."></div>
      Shows the PDF inline. If the file is missing on the live site, says which
